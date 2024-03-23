@@ -1,3 +1,67 @@
+## Rifaai
+# A rifa que ressignifica o ReFi
+
+Plataforma de Rifas na blockchain Scroll com a utilização de serviços da Chainlink.
+
+Tudo será feito de maneira justa e transparente para manter a confiança da comunidade e fortalecer o "protocolo cultural web3 regenerativo". A ideia é que ele funcione a longo prazo hidratando a organização com fluxo de recursos recorrentes.
+
+## Etapas:
+
+### Criação do Smart Contract
+
+O contrato deve ser capaz de receber pagamentos em ETH na rede Scroll, registrar os endereços das carteiras dos participantes e realizar o sorteio. Será utilizado Solidity para criar este contrato.
+
+### Distribuição dos recursos
+
+O Smart Contract enviará automaticamente, em ETH:
+
+- 88% do valor arrecadado para a carteira de quem disponibilizou o item para a rifa;
+- 10% do valor arrecadado para a carteira multisig do coletivo;
+- 2% para a carteira do manager do contrato.
+
+### Entrega do prêmio
+
+A entrega do prêmio será feita via Correios ou Transportadora.
+
+### Replicação do processo
+
+Uma vez que tenhamos sucesso com a primeira rifa, poderemos replicar o processo para vender outros itens.
+
+## PRINCIPAIS COMPONENTES DO CONTRATO
+
+### Gerente
+
+O contrato possui um endereço de gerente, que é a pessoa que implanta o contrato e somente ela pode executar o sorteio.
+
+### Provedor / Patrocinador
+
+Quem disponibiliza o item a ser rifado e recebe o maior montante das vendas(88%).
+
+### Jogadores
+
+Uma série de jogadores que podem assinar o contrato enviando Ether e participar do sorteio.
+
+### Últimos Vencedores
+
+Uma matriz para armazenar os endereços dos últimos vencedores.
+
+### Vencedor escolhido
+
+Uma variável booleana para verificar se um vencedor foi escolhido.
+
+## Principais funções do contrato
+
+- `enter()`: Permite que um jogador assine o contrato enviando um valor pré determinado de Ether(o valor é definido pelo manager).
+- `random()`: Um gerador simples de números aleatórios. Precisamos usar uma fonte de aleatoriedade mais segura para contratos de produção.(Chainlink VRF)
+- `pickWinner()`: Escolhe um vencedor entre os jogadores, transfere 90% do saldo do contrato para o técnico.
+
+## TODO
+
+- [ ] Ajustar a função `pickWinner()`. A função `pickWinner` está atualmente com mais de uma responsabilidade. Além de escolher o vencedor ela está também fazendo a transferência dos recursos.
+- [ ] Criar a função `makeTransaction()`. A função deve fazer a divisão e a transferência dos recursos para as carteiras definidas.
+- [ ] Fazer deploy na rede Scroll Sepolia
+- [ ] Aprimorar o UI/UX do frontend
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
