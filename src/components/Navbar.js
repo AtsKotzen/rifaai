@@ -4,13 +4,13 @@ const NavBar = () => {
   // Estilos definidos diretamente no componente
   const navBarStyle = {
     display: 'flex',
-    justifyContent: 'space-between',
+    //justifyContent: 'center', // Alterado para 'center'
     alignItems: 'center',
-    backgroundColor: '#9fa',
+    backgroundColor: '#99BA92',
     padding: '10px',
     position: 'fixed',
     top:  0,
-    width: '100%',
+    width: '116vh',
     zIndex:  1000,
   };
 
