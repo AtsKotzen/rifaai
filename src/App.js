@@ -7,15 +7,18 @@ import Navbar from "./components/Navbar";
 function App() {
   const [manager, setManager] = useState("");
   const [players, setPlayers] = useState([]);
+  const [winners, setWinners] = useState([]);
   const [balance, setBalance] = useState("");
   const valueInEther = 0.001;
   const [message, setMessage] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
 
   useEffect(() => {
+    
     async function fetchData() {
       const manager = await lottery.methods.manager().call();
       const players = await lottery.methods.getPlayers().call();
+      const winners = await lottery.methods.getLastWinners().call();
       const balanceWei = await web3.eth.getBalance(lottery.options.address);
       const balance = web3.utils.fromWei(balanceWei, "ether");
 
@@ -25,6 +28,7 @@ function App() {
       setManager(manager);
       setPlayers(players);
       setBalance(balance);
+      setWinners(winners);
     }
 
     fetchData();
@@ -48,12 +52,9 @@ function App() {
       setMessage("Sua participação foi registrada ! Boa sorte !");
     } catch (error) {
       console.error("Falha na transação: ", error);
-      setMessage(
-        "Ihhhhh... Deu ruim na transação..."
-      );
+      setMessage("Ihhhhh... Deu ruim na transação...");
     }
   }
-  
 
   async function handleClick() {
     const accounts = await web3.eth.getAccounts();
@@ -70,16 +71,14 @@ function App() {
       setMessage("Temos um vencedor!");
     } catch (error) {
       console.error("Falha na transação:", error);
-      setMessage(
-        "Ihhh... Deu ruim na transação."
-      );
+      setMessage("Ihhh... Deu ruim na transação.");
     }
   }
 
   const cardStyle = {
     border: "2px solid green",
     borderRadius: "10px",
-    padding: "20px",    
+    padding: "20px",
     transition: "all 0.3s ease",
     marginBottom: "15px",
     width: "auto",
@@ -89,9 +88,9 @@ function App() {
     },
   };
 
-  const rowStyle = {    
+  const rowStyle = {
     flexDirection: "column",
-    alignItems: 'center',
+    alignItems: "center",
     //justifyContent: 'center',
     //backgroundColor: "#f5f5f5",
     padding: "80px",
@@ -102,30 +101,28 @@ function App() {
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "center", 
-
+    justifyContent: "center",
   };
 
   const buttonStyle = {
-    backgroundColor: '#4CAF50', // Cor de fundo do botão
-    border: 'none', // Remove a borda padrão
-    color: 'white', // Cor do texto
-    padding: '15px 32px', // Espaçamento interno
-    textAlign: 'center', // Alinhamento do texto
-    textDecoration: 'none', // Remove a decoração do texto
-    display: 'inline-block', // Permite que o botão seja exibido como um bloco inline
-    fontSize: '16px', // Tamanho da fonte
-    margin: '4px 2px', // Margem ao redor do botão
-    cursor: 'pointer', // Muda o cursor para um ponteiro quando o mouse passa sobre o botão
-    borderRadius: '12px', // Bordas arredondadas
-    transition: 'background-color 0.3s ease', // Transição suave da cor de fundo
-   };
+    backgroundColor: "#4CAF50", // Cor de fundo do botão
+    border: "none", // Remove a borda padrão
+    color: "white", // Cor do texto
+    padding: "15px 32px", // Espaçamento interno
+    textAlign: "center", // Alinhamento do texto
+    textDecoration: "none", // Remove a decoração do texto
+    display: "inline-block", // Permite que o botão seja exibido como um bloco inline
+    fontSize: "16px", // Tamanho da fonte
+    margin: "4px 2px", // Margem ao redor do botão
+    cursor: "pointer", // Muda o cursor para um ponteiro quando o mouse passa sobre o botão
+    borderRadius: "12px", // Bordas arredondadas
+    transition: "background-color 0.3s ease", // Transição suave da cor de fundo
+  };
 
   return (
     <>
       <Navbar />
       <div style={containerStyle}>
-
         <div style={rowStyle}>
           <h1>Guitarra Gibson Les Paul</h1>
           <div>
@@ -145,47 +142,43 @@ function App() {
             <p>
               <strong>Modelo: </strong>Les Paul
             </p>
-          </div>
+          </div>          
+
           <div style={cardStyle}>
             {currentAccount !== manager && (
-            
-            <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <h2>Somente 0.001 ETH + taxas de rede !!!</h2>
+                </div>
+                <button style={buttonStyle}>Participar</button>
+              </form>
+            )}
+
+            {currentAccount === manager && (
               <div>
-                <h2 >
-                  Somente 0.001 ETH + taxas de rede !!!
-                </h2>
+                <div>
+                  <h2>Sortear Vencedor</h2>
+                  <button style={buttonStyle} onClick={handleClick}>
+                    Iniciar sorteio
+                  </button>
+                </div>
               </div>
-              <button style={buttonStyle}>Participar</button>
-            </form>
-          )}        
-         
-          {currentAccount === manager && (
-            <div>
-              <div>
-              <h2>Sortear Vencedor</h2>
-              <button style={buttonStyle} onClick={handleClick}>
-                Iniciar sorteio
-              </button>
-              </div>                          
-            </div>
-            
-          )}
+            )}
 
-          {message && (
-            <h3>{message}</h3>
-          )}  
+            {message && <h3>{message}</h3>}
+          </div>
 
+          <div style={cardStyle}>
+            <h2>Contribuição</h2>
+            <h3>
+              10% da arrecadação será enviada automaticamente para a Piscina
+              Comum de Recursos Compartlhados, destinada a ajudar diversos
+              projetos ReFi no Brasil.
+            </h3>
+          </div>
         </div>
 
-        <div style={cardStyle}>
-            <h2>Contribuição</h2>
-            <h3>10% da arrecadação será enviada automaticamente para a Piscina Comum de Recursos Compartlhados, destinada a ajudar diversos projetos ReFi no Brasil.</h3>
-          </div> 
-          
-        </div>        
-
         <div style={rowStyle}>
-          
           <div style={cardStyle}>
             <h2>Total arrecadado em ETH</h2>
             <h2>{balance} / 1 ETH</h2>
@@ -194,24 +187,27 @@ function App() {
           <div style={cardStyle}>
             <h2>Participantes</h2>
             <h2>{players.length}</h2>
-          </div>         
-                    
+          </div>
 
           <div style={cardStyle}>
             <h2>Valor do bilhete</h2>
             <h2>0.001 ETH</h2>
           </div>
 
-           
+          <div style={cardStyle}>
+            <h2>Últimos Vencedores</h2>
+            {winners.map((winner, index) => (
+              <p key={index}>{winner}</p>
+            ))}
+          </div>
           
           <div style={cardStyle}>
             <h3>Organizador da rifa</h3>
             <p>Athus Oliveira</p>
             <p>Endereço: {manager}</p>
           </div>
-         
-        </div> 
-
+          
+        </div>
       </div>
     </>
   );
