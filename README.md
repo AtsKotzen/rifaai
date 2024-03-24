@@ -1,7 +1,7 @@
 ## Rifaai
 # A rifa que ressignifica o ReFi
 
-Plataforma de Rifas na blockchain Scroll com a utilização de serviços da Chainlink.
+Plataforma de Rifas na blockchain Scroll.
 
 Tudo será feito de maneira justa e transparente para manter a confiança da comunidade e fortalecer o "protocolo cultural web3 regenerativo". A ideia é que ele funcione a longo prazo hidratando a organização com fluxo de recursos recorrentes.
 
@@ -17,7 +17,7 @@ O Smart Contract enviará automaticamente, em ETH:
 
 - 88% do valor arrecadado para a carteira de quem disponibilizou o item para a rifa;
 - 10% do valor arrecadado para a carteira multisig do coletivo;
-- 2% para a carteira do manager do contrato.
+- ~2% (residual) pode ser sacado pelo manager do contrato.
 
 ### Entrega do prêmio
 
@@ -57,10 +57,9 @@ Uma variável booleana para verificar se um vencedor foi escolhido.
 
 ## TODO
 
-- [ ] Ajustar a função `pickWinner()`. A função `pickWinner` está atualmente com mais de uma responsabilidade. Além de escolher o vencedor ela está também fazendo a transferência dos recursos.
-- [ ] Criar a função `makeTransaction()`. A função deve fazer a divisão e a transferência dos recursos para as carteiras definidas.
-- [ ] Fazer deploy na rede Scroll Sepolia
-- [ ] Aprimorar o UI/UX do frontend
+- [x] Ajustar a função `pickWinner()`. A função `pickWinner` está atualmente com mais de uma responsabilidade. Além de escolher o vencedor ela está também fazendo a transferência dos recursos.
+- [x] Fazer deploy na rede Scroll Sepolia
+- [x] Aprimorar o UI/UX do frontend
 
 # Getting Started with Create React App
 
