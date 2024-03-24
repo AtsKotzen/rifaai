@@ -49,10 +49,10 @@ function App() {
         gasPrice: web3.utils.toWei("1", "gwei"), // Configuração de gasPrice
       });
 
-      setMessage("Sua participação foi registrada ! Boa sorte !");
+      setMessage("Sua participação foi registrada ! Boa sorte ! Pressione F5");
     } catch (error) {
       console.error("Falha na transação: ", error);
-      setMessage("Ihhhhh... Deu ruim na transação...");
+      setMessage("Ihhhhh... Deu ruim na sua participação... Pressione F5 ");
     }
   }
 
@@ -68,10 +68,10 @@ function App() {
         gasPrice: 10000000, // Configuração de gasPrice
       });
 
-      setMessage("Temos um vencedor!");
+      setMessage("Temos um vencedor! Pressione F5");
     } catch (error) {
       console.error("Falha na transação:", error);
-      setMessage("Ihhh... Deu ruim na transação.");
+      setMessage("Ihhh... Deu ruim na transação. Pressione F5");
     }
   }
 
