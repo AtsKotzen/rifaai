@@ -33,13 +33,13 @@ contract Rifaai is ReentrancyGuard {
     }
 
     function pickWinner() public payable restricted nonReentrant {
-        require(players.length > 0, "No players");
-        require(!winnerPicked, "A winner has been picked.");
+        require(players.length > 0, "No players to pick a winner from.");
+        require(!winnerPicked, "A winner has already been picked.");
 
-         // Calcula a quantidade total a ser distribuída
+        // Calcula a quantidade total a ser distribuída
         uint totalAmount = address(this).balance;
-        uint managerAmount = totalAmount * 88 / 100; // 90% do saldo
-        uint foundationAmount = totalAmount * 10 / 100; // 8% do saldo
+        uint managerAmount = totalAmount * 90 / 100; // 90% do saldo
+        uint foundationAmount = totalAmount * 8 / 100; // 8% do saldo
         uint gasCost = gasleft() * tx.gasprice;
 
         require(totalAmount >= managerAmount.add(foundationAmount).add(gasCost), "Insufficient contract balance.");
