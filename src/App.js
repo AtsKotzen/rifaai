@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import web3 from "./web3";
 import lottery from "./lottery";
-import guit1 from "./assets/guit1.jpeg";
-import guit2 from "./assets/guit2.jpeg";
-import guit3 from "./assets/guit3.jpeg";
+import guit1 from "./assets/guit1.PNG";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -84,30 +82,23 @@ function App() {
         {/* <h2 class="title">Rifaai</h2> */}
         <p class="description">Rifa criada por Athus Oliveira</p>
         <p class="description">Manager: {manager}</p>
-        <p class="description">
-          Atualmente existem {players.length} pessoas participando do Rifaai e
-          ressignificando o que é ReFi
-        </p>
-        <p class="description">Total arrecadado em ETH: {balance}</p>
+        <h2 class="description">Participantes: {players.length}</h2>
+        <h2 class="description">Total: {balance} ETH</h2>
 
         <hr />
 
         <h4 class="subtitle">Prêmio</h4>
-        <p class="description">
-          O prêmio para a rifa atual é uma guitarra elétrica usada. Aqui estão
-          as características da guitarra:
-        </p>
-        <ul class="list">
+        <p class="description">Guitarra Gibson Les Paul</p>
+        {/* <ul class="list">
           <li>Muito confortável e macia</li>
           <li>Marca: Gibson Epiphone</li>
           <li>Modelo: Special</li>
           <li>Pintura: Sunburst</li>
-        </ul>
-        <p class="description">O preço de mercado da guitarra é R$1.000,00.</p>
+        </ul> */}
+        {/* <p class="description">O preço de mercado da guitarra é R$1.000,00.</p> */}
         <div class="image-container">
           <img src={guit1} width="200" alt="imagem do premio" />
-          <img src={guit2} width="200" alt="imagem do premio" />
-          <img src={guit3} width="200" alt="imagem do premio" />
+          
         </div>
 
         <hr />
