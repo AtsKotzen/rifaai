@@ -5,6 +5,8 @@ Plataforma de Rifas na blockchain Scroll.
 
 Tudo será feito de maneira justa e transparente para manter a confiança da comunidade e fortalecer o "protocolo cultural web3 regenerativo". A ideia é que ele funcione a longo prazo hidratando a organização com fluxo de recursos recorrentes.
 
+### Demo: (https://rifaai.web.app/)
+
 ## Etapas:
 
 ### Criação do Smart Contract
