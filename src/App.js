@@ -78,8 +78,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div class="card">
-        {/* <h2 class="title">Rifaai</h2> */}
+      <div class="card">        
         <p class="description">Rifa criada por Athus Oliveira</p>
         <p class="description">Manager: {manager}</p>
         <h2 class="description">Participantes: {players.length}</h2>
@@ -89,13 +88,7 @@ function App() {
 
         <h4 class="subtitle">Prêmio</h4>
         <p class="description">Guitarra Gibson Les Paul</p>
-        {/* <ul class="list">
-          <li>Muito confortável e macia</li>
-          <li>Marca: Gibson Epiphone</li>
-          <li>Modelo: Special</li>
-          <li>Pintura: Sunburst</li>
-        </ul> */}
-        {/* <p class="description">O preço de mercado da guitarra é R$1.000,00.</p> */}
+        
         <div class="image-container">
           <img src={guit1} width="200" alt="imagem do premio" />
           
