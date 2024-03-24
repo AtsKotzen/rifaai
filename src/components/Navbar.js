@@ -6,7 +6,7 @@ const NavBar = () => {
     display: 'flex',
     justifyContent: 'center', // Centraliza o conteúdo horizontalmente
     alignItems: 'center',
-    backgroundColor: '#99BA92',
+    backgroundColor: '#4CAF50',
     padding: '10px',
     marginBottom: '20px', // Reduzido para não ocupar muito espaço
     position: 'fixed',

@@ -78,24 +78,22 @@ function App() {
   const cardStyle = {
     border: "2px solid green",
     borderRadius: "10px",
-    padding: "50px",
-    // margin: '20px',
-    //boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    padding: "20px",    
     transition: "all 0.3s ease",
     marginBottom: "15px",
     width: "auto",
+    maxWidth: "500px",
     hover: {
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
     },
   };
 
-  const rowStyle = {
-    //display: 'flex',
+  const rowStyle = {    
     flexDirection: "column",
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
     //backgroundColor: "#f5f5f5",
-    padding: "50px",
+    padding: "80px",
     boxSizing: "border-box",
   };
 
@@ -103,7 +101,8 @@ function App() {
     display: "flex",
     flexDirection: "row",
     flexWrap: "nowrap",
-    justifyContent: "center",
+    justifyContent: "center", 
+
   };
 
   const buttonStyle = {
@@ -132,10 +131,10 @@ function App() {
             <div>
               <img src={guit1} width="200" alt="imagem do premio" />
             </div>
-            <p>
+            <h4>
               O prêmio para a rifa atual é uma guitarra elétrica usada. Muito
               confortável e macia.
-            </p>
+            </h4>
             <p>
               <strong>Marca: </strong>Gibson
             </p>
@@ -169,6 +168,11 @@ function App() {
             </div>
           )}
         </div>
+
+        <div style={cardStyle}>
+            <h2>Contribuição</h2>
+            <h3>10% da arrecadação será enviada automaticamente para a Piscina Comum de Recursos Compartlhados, destinada a ajudar diversos projetos ReFi no Brasil.</h3>
+          </div> 
           
         </div>        
 
@@ -181,14 +185,16 @@ function App() {
 
           <div style={cardStyle}>
             <h2 class="description">Participantes</h2>
-            <h3>{players.length}</h3>
+            <h2>{players.length}</h2>
           </div>         
                     
 
           <div style={cardStyle}>
             <h2>Valor do bilhete</h2>
             <h2>0.001 ETH</h2>
-          </div>  
+          </div>
+
+           
           
           <div style={cardStyle}>
             <h3>Organizador da rifa</h3>
