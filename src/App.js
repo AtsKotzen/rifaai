@@ -151,7 +151,7 @@ function App() {
             <form onSubmit={handleSubmit}>
               <div>
                 <h2 class="description">
-                  Valor do bilhete: 0.001 ETH + taxas de rede
+                  Somente 0.001 ETH + taxas de rede !!!
                 </h2>
               </div>
               <button style={buttonStyle}>Participar</button>
