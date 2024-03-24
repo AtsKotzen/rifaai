@@ -10,7 +10,7 @@ const NavBar = () => {
     padding: '10px',
     position: 'fixed',
     top:  0,
-    width: '116vh',
+    width: '100vh',
     zIndex:  1000,
   };
 
@@ -25,7 +25,7 @@ const NavBar = () => {
   // };
 
   const titleStyle = {
-    fontSize: '20px',
+    fontSize: '50px',
     fontWeight: 'bold',
   };
 
@@ -33,7 +33,7 @@ const NavBar = () => {
     <nav style={navBarStyle}>
       <div style={logoStyle}>
         {/* <img src="/caminho/para/o/logo.png" alt="Logo Rifai" style={logoImageStyle} /> */}
-        <span style={titleStyle}>Rifaai</span>
+        <span style={titleStyle}>Rifai</span>
       </div>
       {/* Aqui você pode adicionar links de navegação ou outros elementos conforme necessário */}
     </nav>

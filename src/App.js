@@ -105,9 +105,9 @@ function App() {
 
         <h4 class="subtitle">Contribuição</h4>
         <p class="description">
-          É importante mencionar que 10% da arrecadação será enviada
-          automaticamente para a piscina comum de recursos compartilhados. Isso
-          vai ajudar diversos projetos de impacto.
+          10% da arrecadação será enviada
+          automaticamente para a Piscina Comum de Recursos Compartilhados. Isso
+          vai ajudar diversos projetos ReFi no Brasil.
         </p>
 
         <hr />
