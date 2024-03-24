@@ -11,7 +11,6 @@ function App() {
   const valueInEther = 0.001;
   const [message, setMessage] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
-  
 
   useEffect(() => {
     async function fetchData() {
@@ -75,59 +74,130 @@ function App() {
       );
     }
   }
+
+  const cardStyle = {
+    border: "2px solid green",
+    borderRadius: "10px",
+    padding: "50px",
+    // margin: '20px',
+    //boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    transition: "all 0.3s ease",
+    marginBottom: "15px",
+    width: "auto",
+    hover: {
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    },
+  };
+
+  const rowStyle = {
+    //display: 'flex',
+    flexDirection: "column",
+    alignItems: 'center',
+    justifyContent: 'center',
+    //backgroundColor: "#f5f5f5",
+    padding: "50px",
+    boxSizing: "border-box",
+  };
+
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "nowrap",
+    justifyContent: "center",
+  };
+
+  const buttonStyle = {
+    backgroundColor: '#4CAF50', // Cor de fundo do botão
+    border: 'none', // Remove a borda padrão
+    color: 'white', // Cor do texto
+    padding: '15px 32px', // Espaçamento interno
+    textAlign: 'center', // Alinhamento do texto
+    textDecoration: 'none', // Remove a decoração do texto
+    display: 'inline-block', // Permite que o botão seja exibido como um bloco inline
+    fontSize: '16px', // Tamanho da fonte
+    margin: '4px 2px', // Margem ao redor do botão
+    cursor: 'pointer', // Muda o cursor para um ponteiro quando o mouse passa sobre o botão
+    borderRadius: '12px', // Bordas arredondadas
+    transition: 'background-color 0.3s ease', // Transição suave da cor de fundo
+   };
+
   return (
     <>
       <Navbar />
-      <div class="card">        
-        <p class="description">Rifa criada por Athus Oliveira</p>
-        <p class="description">Manager: {manager}</p>
-        <h2 class="description">Participantes: {players.length}</h2>
-        <h2 class="description">Total: {balance} ETH</h2>
+      <div style={containerStyle}>
 
-        <hr />
-
-        <h4 class="subtitle">Prêmio</h4>
-        <p class="description">Guitarra Gibson Les Paul</p>
-        
-        <div class="image-container">
-          <img src={guit1} width="200" alt="imagem do premio" />
-          
+        <div style={rowStyle}>
+          <h1>Guitarra Gibson Les Paul</h1>
+          <div>
+            <div>
+              <img src={guit1} width="200" alt="imagem do premio" />
+            </div>
+            <p>
+              O prêmio para a rifa atual é uma guitarra elétrica usada. Muito
+              confortável e macia.
+            </p>
+            <p>
+              <strong>Marca: </strong>Gibson
+            </p>
+            <p>
+              <strong>Pintura: </strong>Sunburst
+            </p>
+            <p>
+              <strong>Modelo: </strong>Les Paul
+            </p>
+          </div>
+          <div style={cardStyle}>
+            {currentAccount !== manager && (
+            
+            <form onSubmit={handleSubmit}>
+              <div>
+                <h2 class="description">
+                  Valor do bilhete: 0.001 ETH + taxas de rede
+                </h2>
+              </div>
+              <button style={buttonStyle}>Participar</button>
+            </form>
+          )}        
+         
+          {currentAccount === manager && (
+            <div>
+              <h2>Sortear Vencedor</h2>
+              <button style={buttonStyle} onClick={handleClick}>
+                Iniciar sorteio!
+              </button>
+              <h1 class="message">{message}</h1>
+            </div>
+          )}
         </div>
-
-        <hr />
-
-        <h4 class="subtitle">Contribuição</h4>
-        <p class="description">
-          10% da arrecadação será enviada
-          automaticamente para a Piscina Comum de Recursos Compartilhados. Isso
-          vai ajudar diversos projetos ReFi no Brasil.
-        </p>
-
-        <hr />
-        {currentAccount !== manager && (
-        <form onSubmit={handleSubmit}>
-          <h4 class="subtitle">Vai tentar a sorte?</h4>
-          <div>
-            <label class="description">
-              Valor do bilhete: 0.001 ETH + taxas de rede
-            </label>
-          </div>
-          <button class="button">Participar</button>
-        </form>
-        )}
-        <hr />
           
-        {currentAccount === manager && (
-          <div>
-            <h4 class="subtitle">Sortear vencedor</h4>
-            <button class="button" onClick={handleClick}>
-              Iniciar sorteio!
-            </button>
-          </div>
-        )}
-        <hr />
+        </div>        
 
-        <h1 class="message">{message}</h1>
+        <div style={rowStyle}>
+          
+          <div style={cardStyle}>
+            <h2>Total arrecadado em ETH</h2>
+            <h2>{balance} / 1 ETH</h2>
+          </div>
+
+          <div style={cardStyle}>
+            <h2 class="description">Participantes</h2>
+            <h3>{players.length}</h3>
+          </div>         
+                    
+
+          <div style={cardStyle}>
+            <h2>Valor do bilhete</h2>
+            <h2>0.001 ETH</h2>
+          </div>  
+          
+          <div style={cardStyle}>
+            <h3>Organizador da rifa</h3>
+            <p class="description">Athus Oliveira</p>
+            <p class="description">Endereço: {manager}</p>
+          </div>
+         
+        </div> 
+
       </div>
     </>
   );
