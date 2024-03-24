@@ -35,7 +35,7 @@ function App() {
     const accounts = await web3.eth.getAccounts();
     const valueInWei = web3.utils.toWei(valueInEther, "ether");
     console.log(accounts[0]);
-    setMessage("Waiting on transaction success...");
+    setMessage("Aguarde até que a rede processe sua participação...");
 
     try {
       await lottery.methods.enter().send({
@@ -45,19 +45,20 @@ function App() {
         gasPrice: web3.utils.toWei("1", "gwei"), // Configuração de gasPrice
       });
 
-      setMessage("You have been entered!");
+      setMessage("Sua participação foi registrada ! Boa sorte !");
     } catch (error) {
-      console.error("Transaction failed:", error);
+      console.error("Falha na transação: ", error);
       setMessage(
-        "Transaction failed. Please check your account and try again."
+        "Ihhhhh... Deu ruim na transação..."
       );
     }
   }
+  
 
   async function handleClick() {
     const accounts = await web3.eth.getAccounts();
 
-    setMessage("Waiting on transaction success...");
+    setMessage("Sorteando vencedor...");
 
     try {
       await lottery.methods.pickWinner().send({
@@ -66,11 +67,11 @@ function App() {
         gasPrice: 10000000, // Configuração de gasPrice
       });
 
-      setMessage("A winner has been picked!");
+      setMessage("Temos um vencedor!");
     } catch (error) {
-      console.error("Transaction failed:", error);
+      console.error("Falha na transação:", error);
       setMessage(
-        "Transaction failed. Please check your account and try again."
+        "Ihhh... Deu ruim na transação."
       );
     }
   }
@@ -150,7 +151,7 @@ function App() {
             
             <form onSubmit={handleSubmit}>
               <div>
-                <h2 class="description">
+                <h2 >
                   Somente 0.001 ETH + taxas de rede !!!
                 </h2>
               </div>
@@ -160,13 +161,20 @@ function App() {
          
           {currentAccount === manager && (
             <div>
+              <div>
               <h2>Sortear Vencedor</h2>
               <button style={buttonStyle} onClick={handleClick}>
-                Iniciar sorteio!
+                Iniciar sorteio
               </button>
-              <h1 class="message">{message}</h1>
+              </div>                          
             </div>
+            
           )}
+
+          {message && (
+            <h3>{message}</h3>
+          )}  
+
         </div>
 
         <div style={cardStyle}>
@@ -184,7 +192,7 @@ function App() {
           </div>
 
           <div style={cardStyle}>
-            <h2 class="description">Participantes</h2>
+            <h2>Participantes</h2>
             <h2>{players.length}</h2>
           </div>         
                     
@@ -198,8 +206,8 @@ function App() {
           
           <div style={cardStyle}>
             <h3>Organizador da rifa</h3>
-            <p class="description">Athus Oliveira</p>
-            <p class="description">Endereço: {manager}</p>
+            <p>Athus Oliveira</p>
+            <p>Endereço: {manager}</p>
           </div>
          
         </div> 
